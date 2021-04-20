@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Athena_REST.Views.UpdateContactPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Clicked="Close_Page"/>
+        <ToolbarItem Text="Save" Clicked="Update_Contact"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+    <ScrollView BackgroundColor="#DFE0E5" Orientation="Vertical">
+        <StackLayout Spacing="1" Padding="15" BackgroundColor="#DFE0E5">
+            <Frame HasShadow="True" BorderColor="Black" CornerRadius="10">
+                <StackLayout Orientation="Vertical">
+                    <StackLayout Orientation="Horizontal">
+                        <Label HorizontalOptions="Start"  VerticalOptions="Center" Text = "Contact: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                        <Entry x:Name="ServiceContact_Lb" Text="Contact Name" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" WidthRequest="245" VerticalOptions="Center" FontSize="Body" ClearButtonVisibility="WhileEditing" IsSpellCheckEnabled="True" IsTextPredictionEnabled="True"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label HorizontalOptions="Start"  VerticalOptions="Center" Text = "Phone: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                        <Entry x:Name="ServicePhone_Lb" Text="" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" WidthRequest="245" VerticalOptions="Center" FontSize="Body" ClearButtonVisibility="WhileEditing" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label HorizontalOptions="Start"  VerticalOptions="Center" Text = "Address 1: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                        <Entry x:Name="SvcAddr1_Lb" Text="" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" WidthRequest="245" VerticalOptions="Center" FontSize="Body" ClearButtonVisibility="WhileEditing" IsSpellCheckEnabled="True" IsTextPredictionEnabled="True"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label HorizontalOptions="Start"  VerticalOptions="Center" Text = "Address 2: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                        <Entry x:Name="SvcAddr2_Lb" Text="" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" WidthRequest="245" VerticalOptions="Center" FontSize="Body" ClearButtonVisibility="WhileEditing" IsSpellCheckEnabled="True" IsTextPredictionEnabled="True"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label HorizontalOptions="Start"  VerticalOptions="Center" Text = "City: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                        <Entry x:Name="SvcCity_Lb" Text="" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" WidthRequest="245" VerticalOptions="Center" FontSize="Body" ClearButtonVisibility="WhileEditing" IsSpellCheckEnabled="True" IsTextPredictionEnabled="True"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label HorizontalOptions="Start"  VerticalOptions="Center" Text = "State: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                        <Entry x:Name="SvcState_Lb" Text="" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" WidthRequest="245" VerticalOptions="Center" FontSize="Body" ClearButtonVisibility="WhileEditing" IsSpellCheckEnabled="True" IsTextPredictionEnabled="True"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label HorizontalOptions="Start"  VerticalOptions="Center" Text = "Zip: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                        <Entry x:Name="SvcZip_Lb" Text="" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" WidthRequest="245" VerticalOptions="Center" FontSize="Body" ClearButtonVisibility="WhileEditing" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

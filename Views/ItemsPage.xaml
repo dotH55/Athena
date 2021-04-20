@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:fab="clr-namespace:FAB.Forms;assembly=FAB.Forms"
+             mc:Ignorable="d"
+             x:Class="Athena_REST.Views.ItemsPage"
+             Title="D S I"
+             x:Name="BrowseItemsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="Refresh_Icon.png" Clicked="Refresh"/>
+        <ToolbarItem x:Name="Menu_Icon" Icon="Menu_2_Icon.png" Clicked="OpenMenu"></ToolbarItem>
+        <ToolbarItem Icon="Logout_Icon.png" Clicked="Logout"/>
+        <ToolbarItem Icon="Search_Icon.png" Clicked="Lookup_Parts"/>
+        <ToolbarItem Icon="History_Icon.png" Clicked="View_Svc_History"/>
+    </ContentPage.ToolbarItems>
+    <AbsoluteLayout>
+        <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
+            <CollectionView x:Name="ItemsCollectionView"
+                ItemsSource="{Binding Items}">
+                <d:CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>First Item</x:String>
+                        <x:String>Second Item</x:String>
+                        <x:String>Third Item</x:String>
+                        <x:String>Fourth Item</x:String>
+                        <x:String>Fifth Item</x:String>
+                        <x:String>Sixth Item</x:String>
+                    </x:Array>
+                </d:CollectionView.ItemsSource>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding SvcName}" 
+                                d:Text="{Binding .}"
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}"
+                                FontSize="Large"
+                                FontAttributes="Bold"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding ControlID}" 
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="Body"
+                                Padding="20,0,0,0"/>
+                                <Label Text="{Binding SvcDate}" 
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="Body"
+                                Padding="20,0,0,0"/>
+                                <Label Text="{Binding SvcTime}" 
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="Body"
+                                Padding="20,0,0,0"/>
+                                <Label Text="{Binding Status}" 
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="Micro"
+                                TextColor="Goldenrod"
+                                Padding="20,0,0,0"/>
+                                <Label Text="{Binding SvcDistance}" 
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="Large"
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="DarkTurquoise"
+                                Padding="20,0,0,0"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding SvcCity}" 
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="Small"
+                                Padding="20,0,0,0"/>
+                                <Label Text="{Binding Tech_Initials}" 
+                                d:Text="Item descripton"
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                HorizontalOptions="Center"
+                                Padding="20,0,0,0"
+                                FontSize="Small"/>
+                            </StackLayout>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnItemSelected"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <Button Image="Plus_Icon.png" BackgroundColor="#000000"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                 BorderColor="#000000" CornerRadius="5" Clicked="Create_Svc"
+                AbsoluteLayout.LayoutBounds=".90, .85, 50, 50"/>
+        <Button Image="Filter_25.png" BackgroundColor="Transparent"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                 BorderColor="#000000" CornerRadius="5" Clicked="Filter_Svc"
+                AbsoluteLayout.LayoutBounds=".90, .95, 50, 50"/>
+    </AbsoluteLayout>
+</ContentPage>

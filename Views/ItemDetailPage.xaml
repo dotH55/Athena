@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms"
+             x:Class="Athena_REST.Views.ItemDetailPage"
+             Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">#FFFFFF</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Claim_Icon" Icon="Solution_2_Icon.png" Clicked="Claim_Svc"/>
+        <ToolbarItem x:Name="Menu_Icon" Icon="Menu_2_Icon.png" Clicked="OpenMenu"/>
+        <ToolbarItem x:Name="GoogleMap_Icon" Icon="GoogleMaps_Icon.png" Clicked="Launch_Google_Map"/>
+        <ToolbarItem x:Name="Dail_Icon" Icon="Dail_Icon.png" Clicked="Dail_Svc"/>
+        <ToolbarItem x:Name="Search_Icon" Icon="Search_Icon.png" Clicked="Lookup_Parts"/>
+        <ToolbarItem x:Name="History_Icon" Icon="History_Icon.png" Clicked="View_Svc_History"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView BackgroundColor="#DFE0E5" Orientation="Vertical">
+        <StackLayout Spacing="20" Padding="15" BackgroundColor="#FFFFFF">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal" Padding="25,20,20,20">
+                    <Image HorizontalOptions="Start" Source="Machine_Icon.png" WidthRequest="50"  HeightRequest="50" Aspect="AspectFit" Margin="-35,-50,0,-50"/>
+                    <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" Text = "Machine" TextColor="#000000" LineBreakMode="CharacterWrap" FontSize="Large" FontAttributes="Bold"/>
+                </StackLayout>
+                
+                <Frame HasShadow="True" BorderColor="Black" CornerRadius="10">
+                    <StackLayout Orientation="Vertical">
+                        <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                            <Label HorizontalOptions="StartAndExpand"  VerticalOptions="Center" Text = "Name: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                            <Label HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text = "{Binding Item.SvcName}" LineBreakMode="CharacterWrap" FontSize="Body" FontAttributes="Bold"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                            <Label HorizontalOptions="StartAndExpand"  VerticalOptions="Center" Text = "CallID: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                            <Label HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text = "{Binding Item.SvcCallID}" LineBreakMode="CharacterWrap" FontSize="Body" FontAttributes="Bold"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                            <Label HorizontalOptions="StartAndExpand"  VerticalOptions="Center" Text = "ControlID: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                            <Label HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text = "{Binding Item.ControlID}" LineBreakMode="CharacterWrap" FontSize="Body" FontAttributes="Bold"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                            <Label HorizontalOptions="StartAndExpand"  VerticalOptions="Center" Text = "Model: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                            <Label HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text = "{Binding Item.Model}" LineBreakMode="CharacterWrap" FontSize="Body" FontAttributes="Bold"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                            <Label HorizontalOptions="StartAndExpand"  VerticalOptions="Center" Text = "SN: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                            <Label HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text = "{Binding Item.SerialNumber}" LineBreakMode="CharacterWrap" FontSize="Body" FontAttributes="Bold"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                            <Label HorizontalOptions="StartAndExpand"  VerticalOptions="Center" Text = "PayType: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                            <Label HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text = "{Binding Item.PayType}" LineBreakMode="CharacterWrap" FontSize="Body" FontAttributes="Bold"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <StackLayout Orientation="Horizontal" Padding="25,20,20,20">
+                    <Image HorizontalOptions="Start" Source="Bug_Icon.png" WidthRequest="50"  HeightRequest="50" Aspect="AspectFit" Margin="-35,-50,0,-50"/>
+                    <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" Text = "Problem" TextColor="#000000" LineBreakMode="CharacterWrap" FontSize="Large" FontAttributes="Bold"/>
+                </StackLayout>
+
+                <Frame HasShadow="True" BorderColor="Black" CornerRadius="10">
+                    <StackLayout Orientation="Vertical">
+                        <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                            <Label HorizontalOptions="CenterAndExpand"  VerticalOptions="Center" Text = "{Binding Item.Problem}" LineBreakMode="CharacterWrap" FontSize="Body" FontAttributes="Bold"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                            <Editor x:Name="Notes_En" Text="{Binding Item.Notes}" Placeholder="Note" PlaceholderColor="#D3D3D3" HeightRequest="100" WidthRequest="315" AutoSize="TextChanges" FontSize="Body" FontAttributes="Italic"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <StackLayout Orientation="Horizontal" Padding="25,20,20,20">
+                    <StackLayout Orientation="Horizontal" Spacing="15" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                        <Image HorizontalOptions="Start" Source="Setting_Icon.png" WidthRequest="50" HeightRequest="50" Aspect="AspectFit" Margin="-35,-50,0,-50"/>
+                        <Button Text="edit" FontSize="Micro" FontAttributes="Bold" TextColor="#FFFFFF" BackgroundColor="#000000" WidthRequest="60" HeightRequest="32" CornerRadius="15" BorderColor="Black" Clicked="Update_Contact"/>
+                    </StackLayout>
+                    <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" Text = "Settings" TextColor="#000000" LineBreakMode="CharacterWrap" FontSize="Large" FontAttributes="Bold"/>
+                </StackLayout>
+
+                <Frame HasShadow="True" BorderColor="Black" CornerRadius="10">
+                    <StackLayout Orientation="Vertical">
+                        <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                            <Label HorizontalOptions="Start"  VerticalOptions="Center" Text = "Taken By: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                            <Label HorizontalOptions="EndAndExpand"  VerticalOptions="EndAndExpand" Text = "{Binding Item.TakenBy}" LineBreakMode="CharacterWrap" FontSize="Body" FontAttributes="Bold"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                            <Label HorizontalOptions="Start"  VerticalOptions="Center" Text = "Status: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                            <Label HorizontalOptions="EndAndExpand"  VerticalOptions="EndAndExpand" Text = "{Binding Item.Status}" LineBreakMode="CharacterWrap" FontSize="Body" FontAttributes="Bold"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                            <Label HorizontalOptions="Start"  VerticalOptions="Center" Text = "Time: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                            <Label HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text = "{Binding Item.DateTimeIn}" LineBreakMode="CharacterWrap" FontSize="Body" FontAttributes="Bold"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                            <Label HorizontalOptions="Start"  VerticalOptions="Center" Text = "Tech: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                            <Label HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text = "{Binding Item.Tech_Initials}" LineBreakMode="CharacterWrap" FontSize="Body" FontAttributes="Bold"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                            <Label HorizontalOptions="Start"  VerticalOptions="Center" Text = "Contact: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                            <Label HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text = "{Binding Item.ServiceContact}" LineBreakMode="CharacterWrap" FontSize="Body" FontAttributes="Bold"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                            <Label HorizontalOptions="Start"  VerticalOptions="Center" Text = "Phone: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                            <Label HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text = "{Binding Item.ServicePhone}" LineBreakMode="CharacterWrap" FontSize="Body" FontAttributes="Bold"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                            <Label HorizontalOptions="Start"  VerticalOptions="Center" Text = "Address: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                            <Label HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text = "{Binding Item.SvcFullAddress}" LineBreakMode="CharacterWrap" FontSize="Body" FontAttributes="Bold"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                            <Label HorizontalOptions="Start"  VerticalOptions="Center" Text = "Distance: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                            <Label HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text = "{Binding Item.SvcDistance}" LineBreakMode="CharacterWrap" FontSize="Body" FontAttributes="Bold"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <StackLayout x:Name="Solution_Im" Orientation="Horizontal" Padding="25,20,20,20">
+                    <Image HorizontalOptions="Start" Source="Solution_Icon.png" WidthRequest="50"  HeightRequest="50" Aspect="AspectFit" Margin="-35,-50,0,-50"/>
+                    <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" Text = "Solution" TextColor="#000000" LineBreakMode="CharacterWrap" FontSize="Large" FontAttributes="Bold"/>
+                </StackLayout>
+
+                <Frame x:Name="Solution_Frame" HasShadow="True" BorderColor="Black" CornerRadius="10">
+                    <StackLayout x:Name="Solution_Stack" Orientation="Vertical">
+                        <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                            <Editor x:Name="Solution_En" Text="{Binding Item.SvcSolution}" Placeholder="Solution" PlaceholderColor="#D3D3D3" HeightRequest="200" WidthRequest="300" AutoSize="TextChanges"
+                                    FontSize="Body" FontAttributes="Italic" IsSpellCheckEnabled="True" IsTextPredictionEnabled="True"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                            <Image HorizontalOptions="Start" Source="BW_Icon.png" WidthRequest="30"  HeightRequest="30" Aspect="AspectFit" Margin="-10,0,0,0" />
+                            <Editor x:Name="BW_En" HorizontalOptions="CenterAndExpand" Text="{Binding Item.SvcBWMeter}" AutoSize="TextChanges" TextColor="Gray" FontSize="Body" FontAttributes="Italic" />
+                            <Image HorizontalOptions="Start" Source="Color_Icon.png" WidthRequest="30"  HeightRequest="30" Aspect="AspectFit"/>
+                            <Editor x:Name="Color_En" HorizontalOptions="CenterAndExpand" Text="{Binding Item.SvcColorMeter}" AutoSize="TextChanges" TextColor="Gray" FontSize="Body" FontAttributes="Italic"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="-4,0,0,0">
+                            <Image HorizontalOptions="CenterAndExpand" Source="Begin_Icon.png" WidthRequest="30"  HeightRequest="30" Aspect="AspectFit"/>
+                            <TimePicker x:Name="Begin_Tp" HorizontalOptions="CenterAndExpand" Time="9:01" Format="T" PropertyChanged="SetBeginTime" TextColor="Gray" FontSize="Body" FontAttributes="Italic" />
+                            <Image HorizontalOptions="CenterAndExpand" Source="End_Icon.png" WidthRequest="30"  HeightRequest="30" Aspect="AspectFit"/>
+                            <TimePicker x:Name="End_Tp" HorizontalOptions="CenterAndExpand" Time="17:01" Format="T" PropertyChanged="SetEndTime" TextColor="Gray" FontSize="Body" FontAttributes="Italic" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <StackLayout x:Name="Part_Label_Stack" Orientation="Horizontal" Padding="25,35,20,35">
+                    <Image HorizontalOptions="Start" Source="Parts_Icon.png" WidthRequest="50"  HeightRequest="50" Aspect="AspectFit" Margin="-35,-50,0,-50"/>
+                    <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" Text = "Parts" TextColor="#000000" LineBreakMode="CharacterWrap" FontSize="Large" FontAttributes="Bold"/>
+                </StackLayout>
+
+                <Frame x:Name="Parts_Frame" HasShadow="True" BorderColor="Black" CornerRadius="10">
+                    <StackLayout Orientation="Vertical">
+                        <StackLayout x:Name="Part_00" Orientation="Horizontal" Padding="10,30,0,0" IsVisible="False">
+                            <Entry x:Name="Part_00_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_00_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_00_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_01" Orientation="Horizontal" Padding="10,30,0,0" IsVisible="False">
+                            <Entry x:Name="Part_01_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_01_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_01_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_02" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_02_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_02_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_02_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_03" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_03_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_03_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_03_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_04" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_04_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_04_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_04_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_05" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_05_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_05_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_05_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_06" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_06_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_06_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_06_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_07" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_07_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_07_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_07_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_08" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_08_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_08_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_08_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_09" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_09_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_09_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_09_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_10" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_10_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_10_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_10_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+
+                        <StackLayout x:Name="Part_11" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_11_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_11_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_11_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_12" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_12_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_12_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_12_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_13" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_13_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_13_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_13_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_14" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_14_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_14_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_14_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_15" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_15_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_15_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_15_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_16" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_16_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_16_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_16_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_17" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_17_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_17_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_17_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_18" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_18_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_18_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_18_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_19" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_19_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_19_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_19_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_20" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_20_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_20_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_20_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_21" Orientation="Horizontal" Padding="10,30,0,0" IsVisible="false">
+                            <Entry x:Name="Part_21_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_21_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_21_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_22" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_22_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_22_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_22_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_23" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_23_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_23_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_23_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_24" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_24_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_24_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_24_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_25" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_25_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_25_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_25_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_26" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_26_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_26_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_26_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_27" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_27_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_27_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_27_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_28" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_28_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_28_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_28_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_29" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_29_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_29_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_29_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_30" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_30_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_30_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_30_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_31" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_31_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_31_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_31_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_32" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_32_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_32_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_32_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_33" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_33_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_33_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_33_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_34" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_34_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_34_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_34_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_35" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_35_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_35_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_35_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_36" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_36_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_36_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_36_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_37" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_37_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_37_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_37_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_38" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_38_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_38_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_38_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_39" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_39_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_39_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_39_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_40" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_40_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_40_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_40_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+
+                        <StackLayout x:Name="Part_41" Orientation="Horizontal" Padding="10,30,0,0" IsVisible="false">
+                            <Entry x:Name="Part_41_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_41_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_41_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_42" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_42_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_42_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_42_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_43" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_43_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_43_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_43_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_44" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_44_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_44_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_44_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_45" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_45_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_45_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_45_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_46" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_46_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3"  HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_46_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3"  HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_46_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_47" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_47_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3"  HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_47_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3"  HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_47_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_48" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_48_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3"  HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_48_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3"  HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_48_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_49" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="False">
+                            <Entry x:Name="Part_49_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" FontAttributes="Bold"/>
+                            <Entry x:Name="Part_49_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" IsReadOnly="True" WidthRequest="1" FontAttributes="Bold"/>
+                            <Button x:Name="Part_49_Delete_Bt" ImageSource="DeleteLink_Icon.png" WidthRequest="50" Clicked="Delete_Issued_Part" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Part_50" Orientation="Horizontal" Padding="10,0,0,0" IsVisible="True">
+                            <Entry x:Name="Part_50_ID_En" Placeholder="ID" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" FontAttributes="Italic"/>
+                            <Entry x:Name="Part_50_Quantity_En" Placeholder="Quantity" PlaceholderColor="#D3D3D3" HorizontalOptions="FillAndExpand" WidthRequest="1" FontAttributes="Italic"/>
+                            <Button x:Name="Part_50_Delete_Bt" ImageSource="AddLink_Icon.png" WidthRequest="50" Clicked="AddPart" BackgroundColor="#FFFFFF"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <StackLayout x:Name="Signing_Im" Orientation="Horizontal" Padding="25,35,20,25">
+                    <Image HorizontalOptions="Start" Source="Guarantee_Icon.png" WidthRequest="50"  HeightRequest="50" Aspect="AspectFit" Margin="-35,-50,0,-50"/>
+                    <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" Text = "Signature" TextColor="#000000" LineBreakMode="CharacterWrap" FontSize="Large" FontAttributes="Bold"/>
+                </StackLayout>
+
+                <Frame x:Name="Sign_Frame" HasShadow="True" BorderColor="Black" CornerRadius="10">
+                    <StackLayout x:Name="Sign_Stack" Orientation="Vertical">
+                        <local:SignaturePadView x:Name="SignaturePad_Pv" StrokeColor="Black" BackgroundColor="White" StrokeWidth="2"
+                                                WidthRequest="400" HeightRequest="150" />
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,0,0,0">
+                            <Entry x:Name="Logged_User_En" TextColor="Gray" HorizontalOptions="FillAndExpand" FontAttributes="Italic" ClearButtonVisibility="WhileEditing" IsSpellCheckEnabled="True" IsTextPredictionEnabled="True"/>
+                            <Switch x:Name="IT_Service_Tg" IsToggled="False" PropertyChanged="IT_Service"/>
+                            <Label x:Name="IT_Service_Lb" Text="Service Call" TextColor="Gray" FontSize="Micro" FontAttributes="Bold" Padding="0,15,0,0"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <StackLayout x:Name="Reschedule_Complet_Stack" Orientation="Horizontal" HorizontalOptions="Center" Spacing="50" Padding="0,50,0,50">
+                    <Button ImageSource="Schedule_Icon"  HorizontalOptions="Start" WidthRequest="30" HeightRequest="30" Clicked="Reschedule_Svc"/>
+                    <Button ImageSource="Complet_Icon.png" HorizontalOptions="End" WidthRequest="30" HeightRequest="30" Clicked="Complet_Svc"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Athena_REST.Views.EmployeeDetailJob"
+             Title="Service History">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Clicked="ClosePage" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ListView Grid.Row="1" Margin="5,5,5,5" Footer="" x:Name="MyListView"
+                  GroupDisplayBinding="{Binding Title}"
+                  HasUnevenRows="True"
+                  SeparatorVisibility="None"
+                  IsGroupingEnabled="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame BorderColor="#000000" CornerRadius="0" HasShadow="true">
+                            <ScrollView>
+
+                                <StackLayout Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                                        <Label HorizontalOptions="StartAndExpand"  VerticalOptions="Center" Text = "Invoice #: "  FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap" ></Label>
+                                        <Label HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text = "{Binding Invoice_Number}" FontSize="Body" LineBreakMode="CharacterWrap"></Label>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                                        <Label HorizontalOptions="StartAndExpand"  VerticalOptions="Center" Text = "Call #: " FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap" ></Label>
+                                        <Label HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text = "{Binding Call_Number}" FontSize="Body" LineBreakMode="CharacterWrap" ></Label>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                                        <Label HorizontalOptions="StartAndExpand"  VerticalOptions="Center" Text = "Problem: " FontSize="Small" TextColor="Gray" LineBreakMode="CharacterWrap" ></Label>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                                        <Label HorizontalOptions="End"  VerticalOptions="Center" Text = "{Binding Problem}" FontSize="Body" LineBreakMode="CharacterWrap" ></Label>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                                        <Label HorizontalOptions="Start"  VerticalOptions="Center" Text = "Solution: " FontSize="Small" TextColor="Gray" ></Label>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                                        <Label HorizontalOptions="End"  VerticalOptions="Center" Text = "{Binding Solution}" FontSize="Body" LineBreakMode="CharacterWrap" ></Label>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                                        <Label HorizontalOptions="StartAndExpand"  VerticalOptions="Center" Text = "Black Meter: " FontSize="Caption" TextColor="Gray" LineBreakMode="CharacterWrap" ></Label>
+                                        <Label HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text = "{Binding Black_Meter}" FontSize="Body" LineBreakMode="CharacterWrap" ></Label>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                                        <Label HorizontalOptions="StartAndExpand"  VerticalOptions="Center" Text = "Color Meter: " FontSize="Caption" TextColor="Gray" LineBreakMode="CharacterWrap" ></Label>
+                                        <Label HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Text = "{Binding Color_Meter}" FontSize="Body" LineBreakMode="CharacterWrap" ></Label>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                        <Editor Text="{Binding Solution_Parts}" Placeholder="Solution Parts" FontSize="Caption" PlaceholderColor="#D3D3D3" WidthRequest="400" IsEnabled="False"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ScrollView>
+
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell Height="50">
+                        <Frame HasShadow="False" BorderColor="#6e6e6e" CornerRadius="0" Padding="10,0,10,0">
+                            <StackLayout Orientation="Horizontal"
+                                         VerticalOptions="EndAndExpand">
+                                <Label Text="{Binding Title}" 
+                                       VerticalTextAlignment="Center" 
+                                       TextColor="#888888" 
+                                       VerticalOptions="CenterAndExpand"
+                                       FontSize="Body"/>
+                                <Button HorizontalOptions="EndAndExpand" 
+                                        Image="{Binding StateIcon}" 
+                                        VerticalOptions="CenterAndExpand"
+                                        BackgroundColor="Transparent" 
+                                        BorderColor="Transparent" 
+                                        BorderWidth="0"
+                                        Clicked="ShowContent"
+                                        CommandParameter="{Binding .}" />
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+
+            </ListView.GroupHeaderTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

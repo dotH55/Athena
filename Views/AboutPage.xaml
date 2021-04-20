@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Athena_REST.Views.AboutPage"
+             xmlns:vm="clr-namespace:Athena_REST.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">Crimson</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                    <Image Source="DSI_Icon.png" VerticalOptions="Center" HeightRequest="150" />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
+                <Label FontSize="22">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Athena" FontAttributes="Bold" FontSize="22"/>
+                                <Span Text=" " />
+                                <Span Text="13.1" ForegroundColor="{StaticResource LightTextColor}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text=" " />
+                                <Span Text=" " />
+                                <Span Text=" " FontAttributes="Bold" />
+                                <Span Text=" " />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text=" " />
+                                <Span Text=" " />
+                                <Span Text=" " FontAttributes="Bold" />
+                                <Span Text=" " />
+                                <Span Text=" " />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <StackLayout Orientation="Vertical" Padding="0,-25,0,0">
+                    <Image Source="Android_Icon.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Aspect="AspectFit" HeightRequest="64"/>
+                    <Image Source="IOS_Icon.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Aspect="AspectFit" HeightRequest="64"/>
+                </StackLayout>
+                
+                <Button Text="Learn more" 
+                        Command="{Binding OpenWebCommand}"
+                        BackgroundColor="Transparent"
+                        TextColor="{StaticResource Primary}" />
+                <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
+                    <Label x:Name="Policy_Lb" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Privacy Policy |  Terms of Use | Legal" TextColor="#808080" FontSize="10"/>
+                    <Label x:Name="Copyright_Lb" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Copyright © 2020 Duplicating Systems Inc. All rights reserved." TextColor="#808080" FontSize="8"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+    
+</ContentPage>

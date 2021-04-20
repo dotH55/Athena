@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Athena_REST.Views.FeedbackPage"
+             xmlns:vm="clr-namespace:Athena_REST.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:FeedbackViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked"/>
+        <ToolbarItem Text="Send" Clicked="Send_Feedback"/>
+    </ContentPage.ToolbarItems>
+    <ScrollView BackgroundColor="#DFE0E5" Orientation="Vertical">
+        <StackLayout Spacing="1" Padding="15" BackgroundColor="#DFE0E5">
+            <Frame HasShadow="True" BorderColor="Black" CornerRadius="10">
+                <StackLayout Orientation="Vertical">
+                    <StackLayout Orientation="Horizontal">
+                        <Label HorizontalOptions="Start"  VerticalOptions="Center" Text = "Title: "  FontSize="Body" TextColor="Gray" LineBreakMode="CharacterWrap"/>
+                        <Entry x:Name="Title_En" Text="" d:Text="Control ID" Placeholder="ID" PlaceholderColor="Gray" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" WidthRequest="200" VerticalOptions="Center" FontSize="Body" ClearButtonVisibility="WhileEditing" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Editor Text="" d:Text="Problem" x:Name="Feedback_Ed" Placeholder="Problem" PlaceholderColor="Gray" HorizontalOptions="CenterAndExpand" WidthRequest="350" HeightRequest="200" VerticalOptions="CenterAndExpand" AutoSize="TextChanges"  FontSize="Body" IsSpellCheckEnabled="True" IsTextPredictionEnabled="True"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Athena_REST.Views.MenuPage"
+             Title="Menu">
+
+    <StackLayout Padding="10" Spacing="10">
+
+        
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="3">
+            <Image x:Name="User_Profile_im" Source="User_Icon.png" Aspect="AspectFit" HeightRequest="100" Margin="20"/>
+            <Label x:Name="User_name_Lb" TextColor="Gray" FontSize="Large" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            <Label x:Name="User_Location_Lb" TextColor="#f17a00" FontAttributes="Bold" FontSize="Caption" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+        </StackLayout>
+
+        <Grid>
+
+            <StackLayout Margin="0,20,0,0">
+                <ListView x:Name="ListViewMenu" HasUnevenRows="True" x:FieldModifier="public" BackgroundColor="Transparent"
+                      VerticalOptions="Fill" HorizontalOptions="Fill" SeparatorVisibility="Default" SelectionMode="Single">
+                    <ListView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Item 1</x:String>
+                            <x:String>Item 2</x:String>
+                        </x:Array>
+                    </ListView.ItemsSource>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="5,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding Icon}" VerticalOptions="Start" />
+                                    <Label Grid.Column="1" Text="{Binding Title}" 
+                                FontSize="Large"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+</ContentPage>

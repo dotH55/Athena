@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Athena_REST.Views.LoginPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Margin="0,30,0,0" Padding="0,10,0,0">
+                <Label Text="Duplicating Systems Inc." FontSize="Title" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold"/>
+                <Label Text="AthenaRest" FontSize="Title" HorizontalOptions="Center" TextColor="Crimson" FontAttributes="None"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Image Source="icons8_bulldog_127px.png" WidthRequest="65" HeightRequest="65" Aspect="AspectFit" />
+                </StackLayout>
+            </StackLayout>
+            <Grid Grid.Row="1" Margin="20,0,20,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="1" Text="Error Message" x:Name="ErrorMsg_Lb" HorizontalOptions="Center" VerticalOptions="End" IsVisible="False" TextColor="Red" FontSize="15" BackgroundColor="White"/>
+                <Entry Grid.Row="2" x:Name="Username_En" Text="{Binding Username}" Placeholder="Email or Phone Number" PlaceholderColor="#bababa" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ClearButtonVisibility="WhileEditing" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False"/>
+                <Entry Grid.Row="3" x:Name="Password_En" Text="{Binding Password}" Grid.Column="0" Placeholder="Password" IsPassword="true" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+
+                <Button Grid.Row="4" Text="Login" x:Name="Login_Bt" BackgroundColor="Crimson" Clicked="LogIn" TextColor="#FFFFFF"/>
+                <Label x:Name="Forget_Lb" Text="Forget Password?" TextColor="#000000" HorizontalOptions="End" Grid.Row="5"/>
+                <ActivityIndicator Grid.Row="6" x:Name="ActivityIndicator" IsVisible="False" IsEnabled="False" IsRunning="False" Color="Black" BackgroundColor="Transparent"/>
+                <StackLayout Grid.Row="7" Orientation="Horizontal" HorizontalOptions="Center">
+
+                    <Image Source="Facebook_Icon.png" WidthRequest="30" HeightRequest="30"/>
+                    <Image Source="Youtube.png" WidthRequest="30" HeightRequest="30"/>
+                    <Image Source="LinkedIn_Icon.png" WidthRequest="30" HeightRequest="30"/>
+                </StackLayout>
+
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </Grid>
+            <StackLayout Grid.Row="2" BackgroundColor="#FFFFFF" Margin="-10,0,-10,-10">
+                <Label HeightRequest="2" BackgroundColor="#e3e3e3"/>
+                <Button Text="Don't Have Login Account? SignUp" BackgroundColor="#000000" TextColor="White" x:Name="Register_Bt" />
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
