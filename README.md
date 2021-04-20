@@ -10,3 +10,11 @@ With Athena, our Service Department can:
  - Lookup service history
  - Lookup inventory
  - Create a service call
+
+# Login
+![alt text](https://github.com/dotH55/Athena/blob/main/Images/Login.png?raw=true)
+# Detail
+![alt text](https://github.com/dotH55/Athena/blob/main/Images/Svc.png?raw=true)
+![alt text](https://github.com/dotH55/Athena/blob/main/Images/Svc_.png?raw=true)
+# History
+![alt text](https://github.com/dotH55/Athena/blob/main/Images/History.png?raw=true)
